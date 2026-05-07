@@ -13,21 +13,20 @@
 
     body {
       font-family: 'Inter', system-ui, 'Segoe UI', 'Poppins', -apple-system, BlinkMacSystemFont, sans-serif;
-      background: linear-gradient(145deg, #e9f3fe 0%, #d9eafb 100%);
+      background: linear-gradient(145deg, #eef4fc 0%, #e0edfa 100%);
       color: #142f38;
       line-height: 1.5;
     }
 
-    /* modern container */
     .container {
       max-width: 1280px;
       margin: 0 auto;
       padding: 0 2rem;
     }
 
-    /* dashboard style navbar */
+    /* modern navbar */
     .navbar {
-      background: rgba(255, 255, 255, 0.92);
+      background: rgba(255, 255, 255, 0.94);
       backdrop-filter: blur(16px);
       box-shadow: 0 8px 28px rgba(0, 20, 30, 0.08);
       position: sticky;
@@ -88,8 +87,6 @@
       font-weight: 600;
       text-decoration: none;
       transition: all 0.25s ease;
-      border: none;
-      cursor: pointer;
       box-shadow: 0 3px 8px rgba(0,0,0,0.05);
     }
 
@@ -110,13 +107,13 @@
       color: white;
     }
 
-    /* dashboard hero section */
+    /* dashboard hero section with photo */
     .dashboard-hero {
       padding: 3rem 0 3rem 0;
       display: flex;
       flex-wrap: wrap;
       align-items: center;
-      gap: 2.5rem;
+      gap: 3rem;
     }
 
     .hero-greeting {
@@ -170,6 +167,12 @@
       text-align: center;
       min-width: 110px;
       border: 1px solid rgba(200,200,200,0.3);
+      transition: transform 0.2s;
+    }
+
+    .stat-card-dash:hover {
+      transform: translateY(-4px);
+      background: rgba(255,255,245,0.9);
     }
 
     .stat-number {
@@ -179,16 +182,49 @@
       line-height: 1;
     }
 
-    .hero-illustration {
+    /* Profile photo styling */
+    .hero-photo {
       flex: 0.9;
-      background: linear-gradient(135deg, #cbe4fe, #b7d6f5);
+      background: linear-gradient(145deg, #cbe4fe, #b7d6f5);
       border-radius: 48% 52% 38% 62% / 56% 40% 60% 44%;
-      padding: 1.8rem;
+      padding: 1.5rem;
       text-align: center;
-      box-shadow: 0 20px 30px -12px rgba(0,0,0,0.15);
+      box-shadow: 0 25px 40px -12px rgba(0, 0, 0, 0.2);
+      transition: all 0.3s ease;
     }
 
-    /* dashboard cards (features) */
+    .hero-photo:hover {
+      transform: scale(1.01);
+      box-shadow: 0 30px 45px -12px rgba(0, 0, 0, 0.25);
+    }
+
+    .profile-img {
+      width: 100%;
+      max-width: 280px;
+      height: auto;
+      border-radius: 50%;
+      object-fit: cover;
+      box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+      border: 4px solid white;
+      transition: transform 0.3s;
+    }
+
+    .profile-img:hover {
+      transform: scale(1.02);
+    }
+
+    .photo-caption {
+      margin-top: 1rem;
+      font-weight: 600;
+      color: #1c6d7a;
+      background: rgba(255,255,240,0.7);
+      display: inline-block;
+      padding: 0.3rem 1rem;
+      border-radius: 60px;
+      font-size: 0.8rem;
+    }
+
+    /* dashboard cards */
     .section-title {
       font-size: 2.2rem;
       font-weight: 700;
@@ -287,6 +323,37 @@
       transform: scale(0.98);
     }
 
+    /* news highlight */
+    .news-highlight {
+      background: rgba(255,251,240,0.7);
+      border-radius: 40px;
+      padding: 1.8rem;
+      margin: 1rem 0 2rem;
+      backdrop-filter: blur(2px);
+    }
+
+    /* subject tags */
+    .subject-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 2rem;
+      justify-content: space-between;
+      margin-bottom: 2rem;
+    }
+
+    .tag-card {
+      flex: 1;
+      background: #ffffffcc;
+      border-radius: 32px;
+      padding: 1.5rem;
+      transition: 0.2s;
+    }
+
+    .tag-card:hover {
+      background: white;
+      transform: translateY(-3px);
+    }
+
     footer {
       background: #0a3f48;
       color: #cde3ec;
@@ -304,12 +371,13 @@
       .hero-greeting p { max-width: 100%; }
       .stat-grid { justify-content: center; }
       .section-title { font-size: 1.8rem; }
+      .subject-tags { flex-direction: column; }
     }
   </style>
 </head>
 <body>
 
-<!-- WORLD-CLASS DASHBOARD NAVIGATION (points to split pages) -->
+<!-- WORLD-CLASS DASHBOARD NAVIGATION -->
 <div class="navbar">
   <div class="container nav-flex">
     <div class="logo">📖 J. Odhiambo</div>
@@ -325,12 +393,12 @@
 
 <main>
   <div class="container">
-    <!-- DASHBOARD HERO SECTION -->
+    <!-- DASHBOARD HERO SECTION WITH PERSONAL PHOTO -->
     <div class="dashboard-hero">
       <div class="hero-greeting">
         <span class="badge">✨ World-Class Dashboard ✨</span>
         <h1>Jairus Odhiambo<br><span class="highlight-name">Teacher of English & Literature</span></h1>
-        <p>Qualified from Masinde Muliro University of Science and Technology. <strong>I write books, I teach with fire.</strong> Welcome to my creative & academic universe — where every word builds legacy.</p>
+        <p>Qualified from <strong>Masinde Muliro University of Science and Technology</strong>. <strong>I write books, I teach with fire.</strong> Welcome to my creative & academic universe — where every word builds legacy.</p>
         <div class="stat-grid">
           <div class="stat-card-dash"><span class="stat-number">7+</span><br>Teaching years</div>
           <div class="stat-card-dash"><span class="stat-number">3</span><br>Published books</div>
@@ -342,15 +410,10 @@
           <a href="books.html" class="btn">Discover my books</a>
         </div>
       </div>
-      <div class="hero-illustration">
-        <svg width="230" height="230" viewBox="0 0 280 280" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <circle cx="140" cy="140" r="110" fill="#FEF6E6" stroke="#CE632E" stroke-width="2.5"/>
-          <path d="M100 100 L180 100 L195 140 L140 170 L85 140 L100 100Z" fill="#F3D382" stroke="#B45F2A" stroke-width="2"/>
-          <circle cx="140" cy="110" r="14" fill="#1C6D7A"/>
-          <path d="M120 140 L160 140 L150 165 L130 165 L120 140Z" fill="#C28754"/>
-          <text x="140" y="205" text-anchor="middle" fill="#1C6D7A" font-size="24" font-weight="bold" font-family="Georgia">"VOICE</text>
-          <text x="140" y="232" text-anchor="middle" fill="#1C6D7A" font-size="16" font-family="Georgia">OF LITERATURE"</text>
-        </svg>
+      <div class="hero-photo">
+        <!-- Personal photo: logo.jpg from same folder -->
+        <img src="logo.jpg" alt="Jairus Odhiambo - Teacher & Author" class="profile-img" onerror="this.onerror=null; this.src='data:image/svg+xml,%3Csvg xmlns=\'http://www.w3.org/2000/svg\' width=\'200\' height=\'200\' viewBox=\'0 0 200 200\'%3E%3Ccircle cx=\'100\' cy=\'100\' r=\'90\' fill=\'%23D9E9FA\'/%3E%3Ctext x=\'100\' y=\'110\' text-anchor=\'middle\' fill=\'%231C6D7A\' font-size=\'20\'%3E📖%3C/text%3E%3Ctext x=\'100\' y=\'140\' text-anchor=\'middle\' fill=\'%236B4C2C\' font-size=\'14\'%3EJairus%3C/text%3E%3C/svg%3E';">
+        <div class="photo-caption">📸 Jairus Odhiambo — Inspiring through words</div>
       </div>
     </div>
 
@@ -370,7 +433,7 @@
         <div class="dash-card">
           <div class="card-icon-lg">📚✍🏿</div>
           <h3>My Bookshelf</h3>
-          <p>“Echoes of the Savanna”, “The Grammar of Belonging”, “Teaching with Fire” — award-winning stories and reflections.</p>
+          <p>“Echoes of the Savanna”, “The Grammar of Belonging”, “Teaching with Fire” — award-winning stories and reflections. Plus Digital Competency PDF.</p>
           <a href="books.html" class="btn-small">Explore books →</a>
         </div>
         <!-- contact preview -->
@@ -383,8 +446,8 @@
       </div>
     </div>
 
-    <!-- RECENT NEWS / HIGHLIGHTS (dashboard style stats) -->
-    <div style="background: rgba(255,251,240,0.7); border-radius: 40px; padding: 1.8rem; margin: 1rem 0 2rem;">
+    <!-- RECENT NEWS / HIGHLIGHTS (dashboard style) -->
+    <div class="news-highlight">
       <div style="display: flex; flex-wrap: wrap; gap: 2rem; align-items: center; justify-content: space-between;">
         <div>
           <span style="background: #CE632E20; padding: 0.2rem 1rem; border-radius: 60px; font-size: 0.8rem;">📢 Latest update</span>
@@ -408,8 +471,8 @@
     </div>
 
     <!-- quick glance: subjects I teach & writing style -->
-    <div style="display: flex; flex-wrap: wrap; gap: 2rem; justify-content: space-between; margin-bottom: 2rem;">
-      <div style="flex:1; background: #ffffffcc; border-radius: 32px; padding: 1.5rem;">
+    <div class="subject-tags">
+      <div class="tag-card">
         <h4 style="color:#1c6d7a;">📖 Literature focus</h4>
         <ul style="margin-top: 0.8rem; list-style: none;">
           <li>✦ Postcolonial & African Lit</li>
@@ -418,14 +481,21 @@
           <li>✦ Creative Nonfiction</li>
         </ul>
       </div>
-      <div style="flex:1; background: #ffffffcc; border-radius: 32px; padding: 1.5rem;">
+      <div class="tag-card">
         <h4 style="color:#1c6d7a;">✍️ Writing achievements</h4>
         <ul style="margin-top: 0.8rem; list-style: none;">
           <li>📘 3x published author</li>
           <li>🌟 Featured in “Kenya Literary Review”</li>
           <li>🎤 Keynote speaker (2024 Ed. Summit)</li>
+          <li>💻 Digital Competency PDF Guide</li>
         </ul>
       </div>
+    </div>
+
+    <!-- motivational quote section -->
+    <div style="background: #eef0e6; border-radius: 36px; padding: 1.8rem; text-align: center; margin: 1rem 0 2rem;">
+      <p style="font-size: 1.3rem; font-style: italic; color: #2c5a48;">“Language is the roadmap of a culture. It tells you where its people come from and where they are going.” — Rita Mae Brown</p>
+      <p style="margin-top: 0.8rem; font-weight: 500;">— Jairus Odhiambo lives by these words every single day.</p>
     </div>
   </div>
 </main>
@@ -433,21 +503,28 @@
 <footer>
   <div class="container">
     <p>© 2025 Jairus Odhiambo — English & Literature Educator | Masinde Muliro University of Science and Technology</p>
-    <p style="margin-top: 0.5rem; font-size: 0.85rem;">📍 Dashboard | <a href="about.html" style="color:#f4cda6; text-decoration: none;">About</a> | <a href="books.html" style="color:#f4cda6; text-decoration: none;">Books</a> | <a href="contact.html" style="color:#f4cda6; text-decoration: none;">Contact</a></p>
+    <p style="margin-top: 0.5rem; font-size: 0.85rem;"><a href="about.html" style="color:#f4cda6; text-decoration: none;">About</a> | <a href="books.html" style="color:#f4cda6; text-decoration: none;">Books</a> | <a href="contact.html" style="color:#f4cda6; text-decoration: none;">Contact</a></p>
     <p style="margin-top: 0.3rem;">✨ “Teaching with Passion, Writing with Purpose” ✨</p>
   </div>
 </footer>
 
-<!-- smooth scroll and simple interactive console log to show it's dashboard ready -->
 <script>
-  // small effect to highlight active page on nav, just ensure index active style.
+  // active nav highlight
   document.querySelectorAll('.nav-links a').forEach(link => {
-    if(link.getAttribute('href') === 'index.html' || (link.pathname.includes('index') && link.pathname === window.location.pathname)) {
+    if(link.getAttribute('href') === 'index.html' || (link.pathname.includes('index') && link.pathname === window.location.pathname) || (link.getAttribute('href') === '#' && window.location.pathname.endsWith('index.html'))) {
+      link.classList.add('active');
+    } else if (window.location.pathname.endsWith('/') && link.getAttribute('href') === 'index.html') {
       link.classList.add('active');
     }
   });
-  // make sure external page links still work, but we keep consistent
-  console.log("🚀 World-class dashboard — Jairus Odhiambo");
+  
+  // handle logo.jpg fallback gracefully
+  const profileImg = document.querySelector('.profile-img');
+  if (profileImg) {
+    profileImg.addEventListener('error', function() {
+      this.src = "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='280' height='280' viewBox='0 0 280 280'%3E%3Ccircle cx='140' cy='140' r='120' fill='%23D9E9FA'/%3E%3Ctext x='140' y='150' text-anchor='middle' fill='%231C6D7A' font-size='38'%3E📖%3C/text%3E%3Ctext x='140' y='190' text-anchor='middle' fill='%236B4C2C' font-size='18'%3EJairus%3C/text%3E%3C/svg%3E";
+    });
+  }
 </script>
 </body>
 </html>
