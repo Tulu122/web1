@@ -24,7 +24,7 @@
       padding: 0 2rem;
     }
 
-    /* navbar style (matching the elegant dashboard) */
+    /* navbar style */
     .navbar {
       background: rgba(255, 255, 245, 0.96);
       backdrop-filter: blur(16px);
@@ -96,6 +96,35 @@
       box-shadow: 0 8px 18px rgba(206, 99, 46, 0.25);
     }
 
+    .btn-small {
+      display: inline-block;
+      background: #1c6d7a;
+      color: white;
+      padding: 0.5rem 1.2rem;
+      border-radius: 40px;
+      font-weight: 500;
+      text-decoration: none;
+      font-size: 0.85rem;
+      transition: 0.2s;
+      margin-top: 0.5rem;
+    }
+
+    .btn-small:hover {
+      background: #ce632e;
+      transform: translateY(-2px);
+    }
+
+    .btn-outline-pdf {
+      background: transparent;
+      border: 2px solid #1c6d7a;
+      color: #1c6d7a;
+    }
+
+    .btn-outline-pdf:hover {
+      background: #1c6d7a;
+      color: white;
+    }
+
     /* books hero */
     .books-hero {
       text-align: center;
@@ -148,7 +177,7 @@
 
     .books-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
       gap: 2rem;
       margin: 2rem 0;
     }
@@ -160,6 +189,8 @@
       transition: all 0.3s ease;
       box-shadow: 0 20px 30px -15px rgba(0, 0, 0, 0.1);
       border: 1px solid rgba(200, 160, 110, 0.2);
+      display: flex;
+      flex-direction: column;
     }
 
     .book-card:hover {
@@ -177,6 +208,9 @@
 
     .book-info {
       padding: 1.8rem;
+      flex: 1;
+      display: flex;
+      flex-direction: column;
     }
 
     .book-title {
@@ -208,7 +242,71 @@
       margin-top: 0.5rem;
     }
 
-    /* upcoming book card */
+    .button-group {
+      display: flex;
+      gap: 0.8rem;
+      flex-wrap: wrap;
+      margin-top: 1rem;
+    }
+
+    /* PDF preview modal */
+    .modal {
+      display: none;
+      position: fixed;
+      z-index: 1000;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.85);
+      backdrop-filter: blur(5px);
+    }
+
+    .modal-content {
+      background-color: #fefefe;
+      margin: 3% auto;
+      padding: 1rem;
+      border-radius: 32px;
+      width: 90%;
+      max-width: 1000px;
+      height: 85%;
+      display: flex;
+      flex-direction: column;
+      box-shadow: 0 25px 40px rgba(0,0,0,0.3);
+    }
+
+    .modal-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0.8rem 1rem;
+      border-bottom: 1px solid #ddd;
+    }
+
+    .modal-header h3 {
+      color: #1c6d7a;
+    }
+
+    .close-modal {
+      font-size: 2rem;
+      font-weight: bold;
+      cursor: pointer;
+      color: #ce632e;
+      transition: 0.2s;
+    }
+
+    .close-modal:hover {
+      color: #8b3a1a;
+    }
+
+    .pdf-iframe {
+      flex: 1;
+      width: 100%;
+      border: none;
+      border-radius: 20px;
+    }
+
+    /* upcoming book */
     .upcoming-card {
       background: linear-gradient(115deg, #fff1e0, #ffe6d5);
       border-radius: 48px;
@@ -237,7 +335,6 @@
       margin-bottom: 0.7rem;
     }
 
-    /* quotes section */
     .author-quote {
       background: #2c5a48e6;
       color: white;
@@ -266,6 +363,7 @@
       .container { padding: 0 1.2rem; }
       .nav-flex { flex-direction: column; }
       .book-title { font-size: 1.4rem; }
+      .modal-content { margin: 10% auto; width: 95%; height: 80%; }
     }
   </style>
 </head>
@@ -293,41 +391,54 @@
       <p class="books-sub">Words that travel beyond pages — stories and insights from my heart, classroom, and imagination. Each book carries a piece of my soul, written to inspire, heal, and provoke thought.</p>
     </div>
 
-    <!-- FEATURED BOOKS GRID (3 current books) -->
+    <!-- FEATURED BOOKS GRID (4 books including Digital Competency PDF) -->
     <div class="featured-section">
       <h2 class="section-title">✨ Published Works</h2>
       <div class="books-grid">
-        <!-- Book 1 -->
+        <!-- Book 1: Echoes of the Savanna -->
         <div class="book-card">
           <div class="book-cover">📘🌿</div>
           <div class="book-info">
             <div class="book-title">Echoes of the Savanna</div>
             <span class="book-genre">⭐ Literary Fiction · African Modern Classic</span>
-            <p class="book-desc">A lyrical novel that journeys through memory, migration, and the rhythms of rural Kenya. Follow young Adhiambo as she uncovers family secrets tied to the land and its oral traditions. Praised for poetic prose and deep humanity.</p>
-            <div class="rating">★★★★★ 4.8 · “A masterpiece of contemporary African literature” – Daily Nation Review</div>
-            <div style="margin-top: 1.2rem;"><span style="background:#EBDBCB; padding:0.2rem 1rem; border-radius:30px;">ISBN: 978-9914-789-01-2</span></div>
+            <p class="book-desc">A lyrical novel that journeys through memory, migration, and the rhythms of rural Kenya. Follow young Adhiambo as she uncovers family secrets tied to the land and its oral traditions.</p>
+            <div class="rating">★★★★★ 4.8 · “A masterpiece” – Daily Nation Review</div>
           </div>
         </div>
-        <!-- Book 2 -->
+        <!-- Book 2: The Grammar of Belonging -->
         <div class="book-card">
           <div class="book-cover">📖🍂</div>
           <div class="book-info">
             <div class="book-title">The Grammar of Belonging</div>
             <span class="book-genre">🌟 Poetry · Contemporary Verse</span>
-            <p class="book-desc">An award-winning poetry collection exploring identity, displacement, and the healing power of language. Using English, Luo rhythms, and free verse, Jairus crafts intimate reflections on home, love, and resistance.</p>
+            <p class="book-desc">An award-winning poetry collection exploring identity, displacement, and the healing power of language. Using English, Luo rhythms, and free verse.</p>
             <div class="rating">★★★★★ 4.9 · “Heartbreaking and luminous” — African Literary Quarterly</div>
-            <div style="margin-top: 1.2rem;"><span style="background:#EBDBCB; padding:0.2rem 1rem; border-radius:30px;">ISBN: 978-9914-789-12-8</span></div>
           </div>
         </div>
-        <!-- Book 3 -->
+        <!-- Book 3: Teaching with Fire -->
         <div class="book-card">
           <div class="book-cover">📙🔥</div>
           <div class="book-info">
             <div class="book-title">Teaching with Fire</div>
             <span class="book-genre">📚 Pedagogy · Teacher Development</span>
-            <p class="book-desc">A reflective guide for transformative English educators. Blending practical strategies with philosophical insights, this book reimagines the literature classroom as a space for social change, empathy, and critical dialogue.</p>
-            <div class="rating">★★★★★ 5.0 · “Essential reading for every language teacher” — TESOL Africa</div>
-            <div style="margin-top: 1.2rem;"><span style="background:#EBDBCB; padding:0.2rem 1rem; border-radius:30px;">ISBN: 978-9914-789-23-5</span></div>
+            <p class="book-desc">A reflective guide for transformative English educators. Blending practical strategies with philosophical insights for the modern classroom.</p>
+            <div class="rating">★★★★★ 5.0 · “Essential reading” — TESOL Africa</div>
+          </div>
+        </div>
+
+        <!-- Book 4: DIGITAL COMPETENCY PDF (NEW - with preview & download) -->
+        <div class="book-card">
+          <div class="book-cover">💻📘</div>
+          <div class="book-info">
+            <div class="book-title">Digital Competency</div>
+            <span class="book-genre">📄 PDF Resource · Tech & Education</span>
+            <p class="book-desc">A comprehensive guide to digital skills for educators and learners. Covers digital literacy, online safety, remote teaching tools, and 21st-century classroom integration. Perfect for teachers embracing EdTech.</p>
+            <div class="rating">⭐ Interactive resource · Free preview available</div>
+            <div class="button-group">
+              <button onclick="openPDFPreview()" class="btn-small" style="background: #ce632e;">🔍 Preview PDF</button>
+              <a href="Digital Comptency.pdf" download="Digital_Comptency_Jairus_Odhiambo.pdf" class="btn-small btn-outline-pdf">⬇️ Download PDF</a>
+            </div>
+            <p style="font-size: 0.75rem; margin-top: 0.8rem; color: #7a6a5a;">📁 File: Digital Comptency.pdf — 2.4 MB</p>
           </div>
         </div>
       </div>
@@ -338,7 +449,7 @@
       <div class="upcoming-text">
         <span class="badge-up">📅 Coming 2025</span>
         <h3>“The Unwritten Curriculum”</h3>
-        <p style="margin-top: 0.5rem; max-width: 550px;">A bold nonfiction work exploring how hidden narratives in schools shape young minds. Drawing from 7+ years of teaching, Jairus proposes a decolonized, joyful approach to literature education. Foreword by acclaimed educator Dr. Wangari M.<br>✨ Pre-order announcements soon.</p>
+        <p style="margin-top: 0.5rem; max-width: 550px;">A bold nonfiction work exploring how hidden narratives in schools shape young minds. Drawing from 7+ years of teaching, Jairus proposes a decolonized, joyful approach to literature education.</p>
         <div style="margin-top: 1rem;">🎧 Audiobook in production · Companion podcast</div>
       </div>
       <div style="font-size: 4rem;">📖✍🏿</div>
@@ -359,7 +470,7 @@
       </div>
     </div>
 
-    <!-- EXCLUSIVE EXCERPT (creative snippet) -->
+    <!-- EXCLUSIVE EXCERPT -->
     <div class="author-quote">
       <div class="quote-icon">❝</div>
       <p style="font-size: 1.4rem; font-weight: 500; max-width: 800px; margin: 0 auto;">“I write because the classroom is not enough — there are worlds inside us that only ink can release. My books are my extended dialogue with every student I've ever taught.”</p>
@@ -376,6 +487,7 @@
             <span style="background: white; padding: 0.3rem 1rem; border-radius: 60px;">📘 Paperback</span>
             <span style="background: white; padding: 0.3rem 1rem; border-radius: 60px;">🎧 Audiobook (2025)</span>
             <span style="background: white; padding: 0.3rem 1rem; border-radius: 60px;">📱 E-book</span>
+            <span style="background: white; padding: 0.3rem 1rem; border-radius: 60px;">💻 PDF Resources</span>
           </div>
         </div>
         <div>
@@ -384,12 +496,26 @@
       </div>
     </div>
 
-    <!-- additional note: also writer's events -->
     <div style="text-align: center; margin-bottom: 1rem;">
       <p style="color: #5c6e4a;">📢 Book club readings & virtual author visits available. <a href="contact.html" style="color:#ce632e; font-weight:600;">Invite me for a reading</a></p>
     </div>
   </div>
 </main>
+
+<!-- PDF PREVIEW MODAL -->
+<div id="pdfModal" class="modal">
+  <div class="modal-content">
+    <div class="modal-header">
+      <h3>📄 Digital Competency — Preview</h3>
+      <span class="close-modal" onclick="closePDFPreview()">&times;</span>
+    </div>
+    <iframe id="pdfFrame" class="pdf-iframe" src=""></iframe>
+    <div style="padding: 0.8rem; text-align: center; background: #f9f5eb; border-top: 1px solid #eee; border-radius: 0 0 28px 28px;">
+      <a href="Digital Comptency.pdf" download="Digital_Comptency_Jairus_Odhiambo.pdf" class="btn-small" style="background: #1c6d7a;">⬇️ Download Full PDF</a>
+      <span style="margin-left: 0.8rem; font-size: 0.8rem;">🔒 Secure preview — use download button to save.</span>
+    </div>
+  </div>
+</div>
 
 <footer>
   <div class="container">
@@ -404,6 +530,37 @@
   document.querySelectorAll('.nav-links a').forEach(link => {
     if (link.getAttribute('href') === 'books.html') {
       link.classList.add('active');
+    }
+  });
+
+  // PDF Preview functionality
+  const modal = document.getElementById('pdfModal');
+  const pdfFrame = document.getElementById('pdfFrame');
+
+  function openPDFPreview() {
+    // Set the PDF source to the local file "Digital Comptency.pdf"
+    pdfFrame.src = "Digital Comptency.pdf";
+    modal.style.display = "block";
+    document.body.style.overflow = "hidden";
+  }
+
+  function closePDFPreview() {
+    modal.style.display = "none";
+    pdfFrame.src = ""; // stop loading
+    document.body.style.overflow = "auto";
+  }
+
+  // Close modal when clicking outside the modal content
+  window.onclick = function(event) {
+    if (event.target === modal) {
+      closePDFPreview();
+    }
+  }
+
+  // ESC key to close modal
+  document.addEventListener('keydown', function(e) {
+    if (e.key === "Escape" && modal.style.display === "block") {
+      closePDFPreview();
     }
   });
 </script>
