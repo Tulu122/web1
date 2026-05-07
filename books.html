@@ -1,0 +1,411 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>Books | Jairus Odhiambo — Author & Educator</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Inter', system-ui, 'Segoe UI', 'Poppins', -apple-system, BlinkMacSystemFont, sans-serif;
+      background: linear-gradient(135deg, #fdf8ed 0%, #f4ecdb 100%);
+      color: #2c4a3b;
+      line-height: 1.5;
+    }
+
+    .container {
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 0 2rem;
+    }
+
+    /* navbar style (matching the elegant dashboard) */
+    .navbar {
+      background: rgba(255, 255, 245, 0.96);
+      backdrop-filter: blur(16px);
+      box-shadow: 0 8px 28px rgba(0, 20, 20, 0.08);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      padding: 0.9rem 0;
+      border-bottom: 1px solid rgba(180, 120, 60, 0.2);
+    }
+
+    .nav-flex {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+
+    .logo {
+      font-size: 1.85rem;
+      font-weight: 800;
+      letter-spacing: -0.02em;
+      background: linear-gradient(135deg, #1c6d7a, #ce632e);
+      background-clip: text;
+      -webkit-background-clip: text;
+      color: transparent;
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 2rem;
+      list-style: none;
+    }
+
+    .nav-links li a {
+      text-decoration: none;
+      font-weight: 600;
+      color: #5c3e2b;
+      transition: 0.2s;
+      font-size: 1rem;
+      padding-bottom: 4px;
+      border-bottom: 2px solid transparent;
+    }
+
+    .nav-links li a:hover, .nav-links li a.active {
+      color: #ce632e;
+      border-bottom-color: #ce632e;
+    }
+
+    .btn {
+      display: inline-block;
+      background: #1c6d7a;
+      color: white;
+      padding: 0.7rem 1.8rem;
+      border-radius: 40px;
+      font-weight: 600;
+      text-decoration: none;
+      transition: all 0.25s ease;
+      box-shadow: 0 3px 8px rgba(0,0,0,0.05);
+    }
+
+    .btn:hover {
+      background: #ce632e;
+      transform: translateY(-2px);
+      box-shadow: 0 8px 18px rgba(206, 99, 46, 0.25);
+    }
+
+    /* books hero */
+    .books-hero {
+      text-align: center;
+      padding: 2.5rem 0 1.5rem;
+    }
+
+    .badge-books {
+      background: #e8d9c8;
+      color: #b45a2c;
+      padding: 0.3rem 1.2rem;
+      border-radius: 60px;
+      font-size: 0.85rem;
+      font-weight: 700;
+      display: inline-block;
+      margin-bottom: 1rem;
+    }
+
+    .books-hero h1 {
+      font-size: 3.2rem;
+      font-weight: 800;
+      color: #2f5a44;
+      margin-bottom: 0.8rem;
+    }
+
+    .highlight {
+      background: linear-gradient(120deg, #f7e2c0, #f7e2c0 40%, transparent 70%);
+      padding: 0 0.2rem;
+    }
+
+    .books-sub {
+      max-width: 700px;
+      margin: 0 auto;
+      font-size: 1.15rem;
+      color: #5e6b4b;
+    }
+
+    /* book showcase grid */
+    .featured-section {
+      margin: 3rem 0 2rem;
+    }
+
+    .section-title {
+      font-size: 2rem;
+      font-weight: 700;
+      margin: 2rem 0 0.5rem;
+      color: #2f5a44;
+      border-left: 6px solid #ce632e;
+      padding-left: 1rem;
+    }
+
+    .books-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 2rem;
+      margin: 2rem 0;
+    }
+
+    .book-card {
+      background: white;
+      border-radius: 40px;
+      overflow: hidden;
+      transition: all 0.3s ease;
+      box-shadow: 0 20px 30px -15px rgba(0, 0, 0, 0.1);
+      border: 1px solid rgba(200, 160, 110, 0.2);
+    }
+
+    .book-card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 28px 38px -15px rgba(0, 0, 0, 0.2);
+    }
+
+    .book-cover {
+      background: linear-gradient(145deg, #e9dbbc, #dac8a8);
+      padding: 2rem 1.5rem;
+      text-align: center;
+      font-size: 4rem;
+      border-bottom: 3px solid #ce632e30;
+    }
+
+    .book-info {
+      padding: 1.8rem;
+    }
+
+    .book-title {
+      font-size: 1.7rem;
+      font-weight: 800;
+      color: #1c6d7a;
+      margin-bottom: 0.4rem;
+    }
+
+    .book-genre {
+      display: inline-block;
+      background: #f5e5d3;
+      color: #b45a2c;
+      padding: 0.2rem 1rem;
+      border-radius: 60px;
+      font-size: 0.75rem;
+      font-weight: 600;
+      margin: 0.5rem 0;
+    }
+
+    .book-desc {
+      margin: 1rem 0;
+      color: #3c5a4a;
+    }
+
+    .rating {
+      color: #f4b642;
+      font-weight: 600;
+      margin-top: 0.5rem;
+    }
+
+    /* upcoming book card */
+    .upcoming-card {
+      background: linear-gradient(115deg, #fff1e0, #ffe6d5);
+      border-radius: 48px;
+      padding: 2rem;
+      margin: 2rem 0;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 2rem;
+      align-items: center;
+      justify-content: space-between;
+      border: 1px solid #f0cfaa;
+    }
+
+    .upcoming-text h3 {
+      font-size: 1.8rem;
+      color: #bd632f;
+    }
+
+    .badge-up {
+      background: #bd632f20;
+      padding: 0.3rem 1rem;
+      border-radius: 40px;
+      font-weight: 600;
+      font-size: 0.8rem;
+      display: inline-block;
+      margin-bottom: 0.7rem;
+    }
+
+    /* quotes section */
+    .author-quote {
+      background: #2c5a48e6;
+      color: white;
+      border-radius: 56px;
+      padding: 2rem;
+      text-align: center;
+      margin: 2.5rem 0;
+    }
+
+    .quote-icon {
+      font-size: 2.5rem;
+      opacity: 0.7;
+    }
+
+    footer {
+      background: #1f423b;
+      color: #e7e9cf;
+      text-align: center;
+      padding: 2rem;
+      border-radius: 40px 40px 0 0;
+      margin-top: 3rem;
+    }
+
+    @media (max-width: 780px) {
+      .books-hero h1 { font-size: 2.3rem; }
+      .container { padding: 0 1.2rem; }
+      .nav-flex { flex-direction: column; }
+      .book-title { font-size: 1.4rem; }
+    }
+  </style>
+</head>
+<body>
+
+<div class="navbar">
+  <div class="container nav-flex">
+    <div class="logo">📖 J. Odhiambo</div>
+    <ul class="nav-links">
+      <li><a href="index.html">🏠 Dashboard</a></li>
+      <li><a href="about.html">👤 About</a></li>
+      <li><a href="books.html" class="active">📚 Books</a></li>
+      <li><a href="contact.html">✉️ Contact</a></li>
+    </ul>
+    <a href="contact.html" class="btn">Let's Connect →</a>
+  </div>
+</div>
+
+<main>
+  <div class="container">
+    <!-- Books Header -->
+    <div class="books-hero">
+      <span class="badge-books">📖 Published Author & Storyteller</span>
+      <h1>My Literary <span class="highlight">Bookshelf</span></h1>
+      <p class="books-sub">Words that travel beyond pages — stories and insights from my heart, classroom, and imagination. Each book carries a piece of my soul, written to inspire, heal, and provoke thought.</p>
+    </div>
+
+    <!-- FEATURED BOOKS GRID (3 current books) -->
+    <div class="featured-section">
+      <h2 class="section-title">✨ Published Works</h2>
+      <div class="books-grid">
+        <!-- Book 1 -->
+        <div class="book-card">
+          <div class="book-cover">📘🌿</div>
+          <div class="book-info">
+            <div class="book-title">Echoes of the Savanna</div>
+            <span class="book-genre">⭐ Literary Fiction · African Modern Classic</span>
+            <p class="book-desc">A lyrical novel that journeys through memory, migration, and the rhythms of rural Kenya. Follow young Adhiambo as she uncovers family secrets tied to the land and its oral traditions. Praised for poetic prose and deep humanity.</p>
+            <div class="rating">★★★★★ 4.8 · “A masterpiece of contemporary African literature” – Daily Nation Review</div>
+            <div style="margin-top: 1.2rem;"><span style="background:#EBDBCB; padding:0.2rem 1rem; border-radius:30px;">ISBN: 978-9914-789-01-2</span></div>
+          </div>
+        </div>
+        <!-- Book 2 -->
+        <div class="book-card">
+          <div class="book-cover">📖🍂</div>
+          <div class="book-info">
+            <div class="book-title">The Grammar of Belonging</div>
+            <span class="book-genre">🌟 Poetry · Contemporary Verse</span>
+            <p class="book-desc">An award-winning poetry collection exploring identity, displacement, and the healing power of language. Using English, Luo rhythms, and free verse, Jairus crafts intimate reflections on home, love, and resistance.</p>
+            <div class="rating">★★★★★ 4.9 · “Heartbreaking and luminous” — African Literary Quarterly</div>
+            <div style="margin-top: 1.2rem;"><span style="background:#EBDBCB; padding:0.2rem 1rem; border-radius:30px;">ISBN: 978-9914-789-12-8</span></div>
+          </div>
+        </div>
+        <!-- Book 3 -->
+        <div class="book-card">
+          <div class="book-cover">📙🔥</div>
+          <div class="book-info">
+            <div class="book-title">Teaching with Fire</div>
+            <span class="book-genre">📚 Pedagogy · Teacher Development</span>
+            <p class="book-desc">A reflective guide for transformative English educators. Blending practical strategies with philosophical insights, this book reimagines the literature classroom as a space for social change, empathy, and critical dialogue.</p>
+            <div class="rating">★★★★★ 5.0 · “Essential reading for every language teacher” — TESOL Africa</div>
+            <div style="margin-top: 1.2rem;"><span style="background:#EBDBCB; padding:0.2rem 1rem; border-radius:30px;">ISBN: 978-9914-789-23-5</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- UPCOMING BOOK TEASER -->
+    <div class="upcoming-card">
+      <div class="upcoming-text">
+        <span class="badge-up">📅 Coming 2025</span>
+        <h3>“The Unwritten Curriculum”</h3>
+        <p style="margin-top: 0.5rem; max-width: 550px;">A bold nonfiction work exploring how hidden narratives in schools shape young minds. Drawing from 7+ years of teaching, Jairus proposes a decolonized, joyful approach to literature education. Foreword by acclaimed educator Dr. Wangari M.<br>✨ Pre-order announcements soon.</p>
+        <div style="margin-top: 1rem;">🎧 Audiobook in production · Companion podcast</div>
+      </div>
+      <div style="font-size: 4rem;">📖✍🏿</div>
+    </div>
+
+    <!-- ACCLAIM & ENDORSEMENTS -->
+    <div style="margin: 2rem 0;">
+      <h2 class="section-title">🌟 Praise & Accolades</h2>
+      <div style="display: flex; flex-wrap: wrap; gap: 1.5rem; margin: 2rem 0;">
+        <div style="flex:1; background:#ffffffcc; border-radius: 28px; padding: 1.3rem;">
+          <p style="font-style: italic;">“Jairus Odhiambo's writing is both tender and revolutionary. He captures the Luo spirit while speaking to global souls.”</p>
+          <p style="margin-top: 0.7rem; font-weight: 700;">— Dr. Akinyi Ochieng, Literary Scholar</p>
+        </div>
+        <div style="flex:1; background:#ffffffcc; border-radius: 28px; padding: 1.3rem;">
+          <p style="font-style: italic;">“Teaching with Fire changed how I prepare my lessons. It's a manifesto for passionate educators.”</p>
+          <p style="margin-top: 0.7rem; font-weight: 700;">— High School Teacher, Mombasa</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- EXCLUSIVE EXCERPT (creative snippet) -->
+    <div class="author-quote">
+      <div class="quote-icon">❝</div>
+      <p style="font-size: 1.4rem; font-weight: 500; max-width: 800px; margin: 0 auto;">“I write because the classroom is not enough — there are worlds inside us that only ink can release. My books are my extended dialogue with every student I've ever taught.”</p>
+      <p style="margin-top: 1rem; font-weight: 600;">— Jairus Odhiambo, from “The Grammar of Belonging” (introduction)</p>
+    </div>
+
+    <!-- WHERE TO FIND BOOKS -->
+    <div style="background: #F6EFE2; border-radius: 48px; padding: 2rem; margin: 2rem 0 3rem;">
+      <div style="display: flex; flex-wrap: wrap; justify-content: space-between; gap: 1.5rem; align-items: center;">
+        <div>
+          <h3 style="font-size: 1.6rem;">📚 Get the books</h3>
+          <p>Available at select bookstores, Amazon, and via direct order. For bulk copies / school orders, reach out through the contact page.</p>
+          <div style="margin-top: 1rem; display: flex; gap: 0.8rem; flex-wrap: wrap;">
+            <span style="background: white; padding: 0.3rem 1rem; border-radius: 60px;">📘 Paperback</span>
+            <span style="background: white; padding: 0.3rem 1rem; border-radius: 60px;">🎧 Audiobook (2025)</span>
+            <span style="background: white; padding: 0.3rem 1rem; border-radius: 60px;">📱 E-book</span>
+          </div>
+        </div>
+        <div>
+          <a href="contact.html" class="btn" style="background: #ce632e; font-size: 1rem;">Request signed copy →</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- additional note: also writer's events -->
+    <div style="text-align: center; margin-bottom: 1rem;">
+      <p style="color: #5c6e4a;">📢 Book club readings & virtual author visits available. <a href="contact.html" style="color:#ce632e; font-weight:600;">Invite me for a reading</a></p>
+    </div>
+  </div>
+</main>
+
+<footer>
+  <div class="container">
+    <p>© 2025 Jairus Odhiambo — Award-winning Author & Educator | Masinde Muliro University of Science and Technology</p>
+    <p style="margin-top: 0.5rem; font-size: 0.85rem;"><a href="index.html" style="color:#f4cda6; text-decoration: none;">Dashboard</a> | <a href="about.html" style="color:#f4cda6; text-decoration: none;">About</a> | <a href="contact.html" style="color:#f4cda6; text-decoration: none;">Contact</a></p>
+    <p>✍️ “Teaching with Passion, Writing with Purpose” ✨</p>
+  </div>
+</footer>
+
+<script>
+  // active nav highlight for books page
+  document.querySelectorAll('.nav-links a').forEach(link => {
+    if (link.getAttribute('href') === 'books.html') {
+      link.classList.add('active');
+    }
+  });
+</script>
+</body>
+</html>
