@@ -1,0 +1,372 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>About | Jairus Odhiambo — Teacher of English & Literature</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Inter', system-ui, 'Segoe UI', 'Poppins', -apple-system, BlinkMacSystemFont, sans-serif;
+      background: linear-gradient(125deg, #eef4fc 0%, #e0edfa 100%);
+      color: #1a3f48;
+      line-height: 1.5;
+    }
+
+    .container {
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 0 2rem;
+    }
+
+    /* reused navbar style (matches index) */
+    .navbar {
+      background: rgba(255, 255, 255, 0.94);
+      backdrop-filter: blur(16px);
+      box-shadow: 0 8px 28px rgba(0, 20, 30, 0.08);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      padding: 0.9rem 0;
+      border-bottom: 1px solid rgba(70, 130, 200, 0.2);
+    }
+
+    .nav-flex {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+
+    .logo {
+      font-size: 1.85rem;
+      font-weight: 800;
+      letter-spacing: -0.02em;
+      background: linear-gradient(135deg, #1c6d7a, #ce632e);
+      background-clip: text;
+      -webkit-background-clip: text;
+      color: transparent;
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 2rem;
+      list-style: none;
+    }
+
+    .nav-links li a {
+      text-decoration: none;
+      font-weight: 600;
+      color: #1c5a66;
+      transition: 0.2s;
+      font-size: 1rem;
+      padding-bottom: 4px;
+      border-bottom: 2px solid transparent;
+    }
+
+    .nav-links li a:hover, .nav-links li a.active {
+      color: #ce632e;
+      border-bottom-color: #ce632e;
+    }
+
+    .btn {
+      display: inline-block;
+      background: #1c6d7a;
+      color: white;
+      padding: 0.7rem 1.8rem;
+      border-radius: 40px;
+      font-weight: 600;
+      text-decoration: none;
+      transition: all 0.25s ease;
+      box-shadow: 0 3px 8px rgba(0,0,0,0.05);
+    }
+
+    .btn:hover {
+      background: #ce632e;
+      transform: translateY(-2px);
+      box-shadow: 0 8px 18px rgba(206, 99, 46, 0.25);
+    }
+
+    /* about hero */
+    .about-hero {
+      padding: 2rem 0 2rem 0;
+      text-align: center;
+    }
+
+    .badge-about {
+      background: #faeedf;
+      color: #bc5829;
+      padding: 0.3rem 1.2rem;
+      border-radius: 60px;
+      font-size: 0.85rem;
+      font-weight: 700;
+      display: inline-block;
+      margin-bottom: 1rem;
+    }
+
+    .about-hero h1 {
+      font-size: 3rem;
+      font-weight: 800;
+      color: #0e4b57;
+      margin-bottom: 1rem;
+    }
+
+    .highlight {
+      background: linear-gradient(120deg, #f7e2c0, #f7e2c0 40%, transparent 70%);
+      padding: 0 0.2rem;
+    }
+
+    .about-intro {
+      max-width: 800px;
+      margin: 0 auto;
+      font-size: 1.2rem;
+      color: #2d6a6a;
+    }
+
+    /* grid layouts */
+    .bio-grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 2.5rem;
+      margin: 3rem 0;
+      align-items: center;
+    }
+
+    .bio-text {
+      flex: 1.5;
+    }
+
+    .bio-image-card {
+      flex: 1;
+      background: linear-gradient(145deg, #cfe2f5, #bdd6ef);
+      border-radius: 48px;
+      padding: 1.8rem;
+      text-align: center;
+      box-shadow: 0 20px 30px -10px rgba(0, 0, 0, 0.1);
+    }
+
+    .section-title {
+      font-size: 2rem;
+      font-weight: 700;
+      margin: 2rem 0 1rem;
+      color: #144e59;
+      border-left: 6px solid #ce632e;
+      padding-left: 1rem;
+    }
+
+    .journey-cards {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 2rem;
+      margin: 2rem 0;
+    }
+
+    .journey-card {
+      background: white;
+      border-radius: 32px;
+      padding: 1.8rem;
+      transition: all 0.3s;
+      box-shadow: 0 12px 22px -12px rgba(0, 0, 0, 0.08);
+      border: 1px solid rgba(0,0,0,0.03);
+    }
+
+    .journey-card:hover {
+      transform: translateY(-6px);
+      background: #fffefa;
+    }
+
+    .journey-icon {
+      font-size: 2.5rem;
+      margin-bottom: 1rem;
+    }
+
+    .quote-box {
+      background: #ffffffcc;
+      backdrop-filter: blur(4px);
+      border-radius: 36px;
+      padding: 2rem;
+      margin: 2rem 0;
+      text-align: center;
+      font-style: italic;
+      border-left: 8px solid #ce632e;
+    }
+
+    .passion-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+      margin: 1.5rem 0;
+    }
+
+    .passion-tag {
+      background: #e0f0fa;
+      padding: 0.5rem 1.2rem;
+      border-radius: 60px;
+      font-weight: 500;
+      color: #1c6d7a;
+    }
+
+    footer {
+      background: #0a3f48;
+      color: #cde3ec;
+      text-align: center;
+      padding: 2rem;
+      border-radius: 40px 40px 0 0;
+      margin-top: 3rem;
+    }
+
+    @media (max-width: 850px) {
+      .about-hero h1 { font-size: 2.2rem; }
+      .container { padding: 0 1.2rem; }
+      .nav-flex { flex-direction: column; }
+      .bio-grid { flex-direction: column-reverse; text-align: center; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- Navigation with active page indicator -->
+<div class="navbar">
+  <div class="container nav-flex">
+    <div class="logo">📖 J. Odhiambo</div>
+    <ul class="nav-links">
+      <li><a href="index.html">🏠 Dashboard</a></li>
+      <li><a href="about.html" class="active">👤 About</a></li>
+      <li><a href="books.html">📚 Books</a></li>
+      <li><a href="contact.html">✉️ Contact</a></li>
+    </ul>
+    <a href="contact.html" class="btn">Let's Connect →</a>
+  </div>
+</div>
+
+<main>
+  <div class="container">
+    <!-- About Hero section -->
+    <div class="about-hero">
+      <span class="badge-about">✦ Passionate Educator & Author ✦</span>
+      <h1>Jairus Odhiambo<br><span class="highlight">English & Literature Teacher</span></h1>
+      <p class="about-intro">Qualified from <strong>Masinde Muliro University of Science and Technology</strong> — I live at the crossroads of language, imagination, and social impact. My mission is to turn every learner into a critical thinker and compassionate storyteller.</p>
+    </div>
+
+    <!-- Bio + illustration -->
+    <div class="bio-grid">
+      <div class="bio-text">
+        <h2 style="color: #1c6d7a; margin-bottom: 0.5rem;">My journey into words</h2>
+        <p style="margin-bottom: 1rem;">Growing up in Kisumu, I discovered that stories hold the power to heal, challenge, and unite. This led me to pursue a Bachelor of Education (English & Literature) at Masinde Muliro University of Science and Technology, where I graduated with honors. For over 7 years, I have taught in diverse classrooms — from rural schools to international curricula — always championing the beauty of the English language and the depth of global literatures.</p>
+        <p>Beyond the classroom, I write books that explore identity, resilience, and the African narrative. I believe teaching is not a job; it's a calling. Every time a student unlocks a metaphor or finishes a poem they wrote, I see the future changing.</p>
+        <div class="passion-list">
+          <span class="passion-tag">📖 Critical Literacy</span>
+          <span class="passion-tag">🌍 Postcolonial Theory</span>
+          <span class="passion-tag">✍🏿 Creative Writing Coach</span>
+          <span class="passion-tag">🎭 Drama in Education</span>
+        </div>
+      </div>
+      <div class="bio-image-card">
+        <svg width="180" height="180" viewBox="0 0 240 240" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <circle cx="120" cy="120" r="100" fill="#FCF3E0" stroke="#CE632E" stroke-width="2.5"/>
+          <path d="M85 90 L155 90 L165 125 L120 155 L75 125 L85 90Z" fill="#F3D382" stroke="#B45F2A"/>
+          <circle cx="120" cy="100" r="12" fill="#1C6D7A"/>
+          <text x="120" y="180" text-anchor="middle" fill="#144E59" font-size="20" font-weight="bold">"Mwalimu"</text>
+          <text x="120" y="200" text-anchor="middle" fill="#CE632E" font-size="13">teacher & author</text>
+        </svg>
+        <p style="margin-top: 1rem; font-weight: 500;">📍 Based in Kenya — open to global collaborations</p>
+      </div>
+    </div>
+
+    <!-- Philosophy & passion cards -->
+    <h2 class="section-title">🔥 Teaching with Passion: My Core Beliefs</h2>
+    <div class="journey-cards">
+      <div class="journey-card">
+        <div class="journey-icon">❤️‍🔥</div>
+        <h3>Empathy first</h3>
+        <p>My classroom is a safe space where every voice matters. I adapt literature to reflect students' lived experiences, building bridges between classic texts and contemporary realities.</p>
+      </div>
+      <div class="journey-card">
+        <div class="journey-icon">📚</div>
+        <h3>Writing as liberation</h3>
+        <p>I've mentored over 200 young writers. Through weekly writing circles, my students learn to transform emotions into poetry, prose, and activism.</p>
+      </div>
+      <div class="journey-card">
+        <div class="journey-icon">🎓</div>
+        <h3>Academic excellence</h3>
+        <p>Graduate of Masinde Muliro University of Science and Technology. I constantly research new pedagogical methods, integrating digital tools & decolonial approaches.</p>
+      </div>
+    </div>
+
+    <!-- qualification + university highlight -->
+    <div style="background: linear-gradient(120deg, #DFECF5, #cfe1f0); border-radius: 40px; padding: 2rem; margin: 2rem 0;">
+      <div style="display: flex; flex-wrap: wrap; gap: 1.5rem; align-items: center; justify-content: space-between;">
+        <div>
+          <span style="background: #CE632E20; padding: 0.3rem 1rem; border-radius: 60px;">🎓 Alma Mater</span>
+          <h3 style="margin-top: 1rem; font-size: 1.7rem;">Masinde Muliro University of Science and Technology</h3>
+          <p>Bachelor of Education (English & Literature) — First Class Honors. My research focused on using African oral literature to teach critical thinking. I continue to collaborate with university literacy projects.</p>
+        </div>
+        <div style="text-align: center;">
+          <div style="font-size: 3rem;">🏛️📖</div>
+          <p><strong>MMUST Alumni</strong><br>Department of Literature</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- fun facts & personal note -->
+    <div class="quote-box">
+      <p style="font-size: 1.5rem; margin-bottom: 0.5rem;">“Literature is the mirror of society, and my mission is to help each student read that mirror — and then write their own reflection.”</p>
+      <p style="font-weight: 700; margin-top: 0.8rem;">— Jairus Odhiambo, Teacher & Author</p>
+    </div>
+
+    <div style="margin: 2rem 0 1rem;">
+      <h2 class="section-title">✍️ Beyond the syllabus</h2>
+      <div style="display: flex; flex-wrap: wrap; gap: 2rem; justify-content: space-between; margin-top: 1rem;">
+        <div style="flex:1; background: #ffffffcc; border-radius: 28px; padding: 1.3rem;">
+          <span style="font-size: 2rem;">🏅</span>
+          <h4>Speaking & workshops</h4>
+          <p>Invited speaker at Kenya Literature Conference (2023), UNESCO literacy roundtable. I run creative writing bootcamps for young adults.</p>
+        </div>
+        <div style="flex:1; background: #ffffffcc; border-radius: 28px; padding: 1.3rem;">
+          <span style="font-size: 2rem;">🌱</span>
+          <h4>Community projects</h4>
+          <p>Founder of “Story Shapers” — a free after-school program that has provided literary resources to 5 rural schools.</p>
+        </div>
+        <div style="flex:1; background: #ffffffcc; border-radius: 28px; padding: 1.3rem;">
+          <span style="font-size: 2rem;">📡</span>
+          <h4>Digital pedagogy</h4>
+          <p>Blending modern EdTech with literature, I create interactive sessions that make Shakespeare and poetry relevant for Gen Z.</p>
+        </div>
+      </div>
+    </div>
+    
+    <!-- call to action (connect) -->
+    <div style="text-align: center; margin: 3rem 0 2rem;">
+      <a href="contact.html" class="btn" style="background: #ce632e; font-size: 1.1rem;">📩 Invite me to speak / collaborate →</a>
+      <p style="margin-top: 1rem; color: #2f6f6f;">Let's build a world where every page sparks change.</p>
+    </div>
+  </div>
+</main>
+
+<footer>
+  <div class="container">
+    <p>© 2025 Jairus Odhiambo — English & Literature Educator | Masinde Muliro University of Science and Technology Alumni</p>
+    <p style="margin-top: 0.5rem; font-size: 0.85rem;"><a href="index.html" style="color:#f4cda6; text-decoration: none;">Dashboard</a> | <a href="books.html" style="color:#f4cda6; text-decoration: none;">Books</a> | <a href="contact.html" style="color:#f4cda6; text-decoration: none;">Contact</a></p>
+    <p>✨ “Teaching with Passion, Writing with Purpose” ✨</p>
+  </div>
+</footer>
+
+<script>
+  // small active nav highlight
+  document.querySelectorAll('.nav-links a').forEach(link => {
+    if (link.getAttribute('href') === 'about.html') {
+      link.classList.add('active');
+    }
+  });
+</script>
+</body>
+</html>
